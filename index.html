@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roberto Echeverria - California Journey</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* ========== GLOBAL RESETS ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --neon-blue: #4A90E2;
+            --light-blue: #6AB5EE;
+            --dark-blue: #2C5F8D;
+            --accent-blue: #7AC5F4;
+            --navy: #1A2332;
+            --darker-navy: #0D1117;
+            --text-white: #FFFFFF;
+            --text-glow: #B8D4F1;
+        }
+
+        body {
+            font-family: 'VT323', monospace;
+            background: var(--navy);
+            color: var(--text-white);
+            overflow-x: hidden;
+        }
+
+        .app {
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* ========== STARRY BACKGROUND ========== */
+        .stars,
+        .twinkling {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+            z-index: -1;
+        }
+
+        .stars {
+            background: #1A2332 url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><circle cx="10" cy="10" r="1" fill="white"/><circle cx="50" cy="30" r="1" fill="white"/><circle cx="90" cy="50" r="1" fill="white"/><circle cx="130" cy="70" r="1" fill="white"/><circle cx="170" cy="90" r="1" fill="white"/><circle cx="30" cy="110" r="1" fill="white"/><circle cx="70" cy="130" r="1" fill="white"/><circle cx="110" cy="150" r="1" fill="white"/><circle cx="150" cy="170" r="1" fill="white"/><circle cx="190" cy="190" r="1" fill="white"/></svg>') repeat;
+        }
+
+        .twinkling {
+            background: transparent url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><circle cx="20" cy="20" r="1" fill="white" opacity="0.8"/><circle cx="80" cy="60" r="1" fill="white" opacity="0.6"/><circle cx="140" cy="100" r="1" fill="white" opacity="0.7"/><circle cx="60" cy="140" r="1" fill="white" opacity="0.5"/><circle cx="180" cy="180" r="1" fill="white" opacity="0.9"/></svg>') repeat;
+            animation: twinkle 5s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        /* ========== HEADER ========== */
+        .header {
+            background: linear-gradient(90deg, var(--dark-blue), var(--neon-blue), var(--light-blue));
+            padding: 1rem 0;
+            border-bottom: 3px solid var(--accent-blue);
+            box-shadow: 0 0 20px var(--neon-blue);
+        }
+
+        .marquee {
+            overflow: hidden;
+            white-space: nowrap;
+            box-sizing: border-box;
+        }
+
+        .marquee span {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 20s linear infinite;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 1.2rem;
+            color: var(--darker-navy);
+            font-weight: bold;
+        }
+
+        @keyframes marquee {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-100%, 0); }
+        }
+
+        /* ========== HOME PAGE ========== */
+        .home-container {
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .title-box {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: rgba(74, 144, 226, 0.1);
+            border: 3px dashed var(--neon-blue);
+            border-radius: 20px;
+            animation: pulse-border 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-border {
+            0%, 100% { border-color: var(--neon-blue); }
+            50% { border-color: var(--light-blue); }
+        }
+
+        .glitch {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 2rem;
+            color: var(--light-blue);
+            text-shadow: 
+                0 0 10px var(--light-blue),
+                0 0 20px var(--light-blue),
+                0 0 30px var(--light-blue),
+                3px 3px 0 var(--neon-blue),
+                -3px -3px 0 var(--accent-blue);
+            animation: glitch 1s infinite;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        @keyframes glitch {
+            0%, 90%, 100% { transform: translate(0); }
+            93% { transform: translate(-2px, 2px); }
+            96% { transform: translate(2px, -2px); }
+        }
+
+        .subtitle {
+            font-family: 'VT323', monospace;
+            font-size: 2rem;
+            color: var(--accent-blue);
+            text-shadow: 0 0 10px var(--accent-blue);
+            margin-bottom: 0.5rem;
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50%, 100% { opacity: 1; }
+            25%, 75% { opacity: 0.5; }
+        }
+
+        .tagline {
+            font-family: 'Courier Prime', monospace;
+            font-size: 1.5rem;
+            color: var(--neon-blue);
+            font-style: italic;
+        }
+
+        .home-cta {
+            margin-top: 2rem;
+        }
+
+        .about-btn {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 0.9rem;
+            background: var(--neon-blue);
+            color: var(--darker-navy);
+            padding: 1rem 2rem;
+            border: 3px solid var(--light-blue);
+            border-radius: 10px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px var(--neon-blue);
+            line-height: 1.8;
+            cursor: pointer;
+        }
+
+        .about-btn:hover {
+            background: var(--light-blue);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 5px 30px var(--light-blue);
+        }
+
+        /* ========== MAP CONTAINER ========== */
+        .map-container {
+            position: relative;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: rgba(74, 144, 226, 0.05);
+            border: 5px solid var(--neon-blue);
+            border-radius: 30px;
+            box-shadow: 
+                0 0 20px var(--neon-blue),
+                inset 0 0 20px rgba(74, 144, 226, 0.2);
+        }
+
+        .map-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .california-map-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .landmark-marker {
+            position: absolute;
+            cursor: pointer;
+            transition: filter 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .landmark-marker:hover {
+            filter: drop-shadow(0 0 15px var(--accent-blue)) brightness(1.3);
+        }
+
+        .sf-marker {
+            top: 43%;
+            left: 7%;
+        }
+
+        .la-marker {
+            top: 75%;
+            left: 45%;
+        }
+
+        .sd-marker {
+            bottom: 5%;
+            right: 20%;
+        }
+
+        .landmark-label {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 0.7rem;
+            color: var(--text-white);
+            text-shadow: 
+                0 0 8px var(--neon-blue),
+                2px 2px 4px rgba(0, 0, 0, 0.8);
+            white-space: nowrap;
+            pointer-events: none;
+            line-height: 1.4;
+            text-align: center;
+        }
+
+        .instructions {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 1.8rem;
+            color: var(--accent-blue);
+            animation: bounce 2s infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            background: var(--darker-navy);
+            padding: 2rem;
+            text-align: center;
+            border-top: 3px solid var(--neon-blue);
+            margin-top: 3rem;
+            font-family: 'VT323', monospace;
+            font-size: 1.5rem;
+        }
+
+        .visitor-counter {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--neon-blue);
+            color: var(--darker-navy);
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            box-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        .footer p {
+            color: var(--light-blue);
+            margin: 1rem 0;
+        }
+
+        .badges {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .badge {
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            border: 2px solid var(--text-white);
+            box-shadow: 0 0 10px var(--neon-blue);
+            font-family: 'Press Start 2P', monospace;
+            font-size: 0.7rem;
+        }
+
+        .badge-html {
+            background: var(--neon-blue);
+            color: var(--darker-navy);
+        }
+
+        .badge-vibes {
+            background: var(--accent-blue);
+            color: var(--darker-navy);
+        }
+
+        /* ========== DETAIL PAGES ========== */
+        .detail-page {
+            display: none;
+            min-height: 100vh;
+            padding: 2rem;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .detail-page.active {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .back-button {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 1rem;
+            background: var(--neon-blue);
+            color: var(--darker-navy);
+            border: 3px solid var(--light-blue);
+            padding: 1rem 2rem;
+            cursor: pointer;
+            border-radius: 10px;
+            box-shadow: 0 0 20px var(--neon-blue);
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+        }
+
+        .back-button:hover {
+            background: var(--light-blue);
+            color: var(--darker-navy);
+            transform: scale(1.1);
+            box-shadow: 0 0 30px var(--light-blue);
+        }
+
+        /* ========== CONTENT ========== */
+        .city-content,
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            animation: fadeIn 0.5s ease-in;
+            background: rgba(26, 35, 50, 0.5);
+            border: 3px solid var(--neon-blue);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 0 20px rgba(74, 144, 226, 0.3);
+        }
+
+        .content-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .content-header h2 {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 2.5rem;
+            color: var(--accent-blue);
+            text-shadow: 
+                0 0 10px var(--accent-blue),
+                0 0 20px var(--accent-blue),
+                0 0 30px var(--accent-blue);
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .underline {
+            height: 5px;
+            background: linear-gradient(90deg, var(--dark-blue), var(--neon-blue), var(--light-blue), var(--accent-blue));
+            border-radius: 5px;
+            max-width: 200px;
+            margin: 0 auto;
+        }
+
+        .section-box {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(74, 144, 226, 0.05);
+            border: 2px solid var(--neon-blue);
+            border-radius: 10px;
+        }
+
+        .section-box h3 {
+            font-family: 'VT323', monospace;
+            font-size: 1.8rem;
+            color: var(--accent-blue);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px var(--accent-blue);
+        }
+
+        .project-card {
+            background: rgba(13, 17, 23, 0.5);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--neon-blue);
+        }
+
+        .description {
+            font-size: 1.2rem;
+            color: var(--accent-blue);
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .highlights {
+            list-style: none;
+            padding: 0;
+        }
+
+        .highlights li {
+            font-size: 1.2rem;
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            line-height: 1.6;
+            color: var(--text-glow);
+        }
+
+        .highlights li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--accent-blue);
+            font-size: 1.5rem;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 0.6rem;
+            background: var(--neon-blue);
+            color: var(--darker-navy);
+            padding: 0.4rem 0.8rem;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(74, 144, 226, 0.5);
+        }
+
+        .intro-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            color: var(--text-glow);
+        }
+
+        .intro-text strong {
+            color: var(--accent-blue);
+            text-shadow: 0 0 5px var(--accent-blue);
+        }
+
+        .facts-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .facts-list li {
+            font-size: 1.1rem;
+            padding: 0.8rem;
+            margin-bottom: 0.8rem;
+            background: rgba(74, 144, 226, 0.05);
+            border-left: 4px solid var(--neon-blue);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .facts-list li:hover {
+            background: rgba(74, 144, 226, 0.1);
+            transform: translateX(10px);
+            border-left-color: var(--accent-blue);
+        }
+
+        .facts-list strong {
+            color: var(--accent-blue);
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-box {
+            background: rgba(74, 144, 226, 0.05);
+            border: 2px solid var(--neon-blue);
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .project-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(74, 144, 226, 0.3);
+            border-color: var(--accent-blue);
+        }
+
+        .project-box h3 {
+            font-family: 'VT323', monospace;
+            font-size: 1.5rem;
+            color: var(--accent-blue);
+            margin-bottom: 1rem;
+        }
+
+        .project-box p {
+            color: var(--text-glow);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .skill-category h4 {
+            font-family: 'VT323', monospace;
+            font-size: 1.3rem;
+            color: var(--accent-blue);
+            margin-bottom: 0.8rem;
+        }
+
+        .skill-pills {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .skill-pills span {
+            background: rgba(74, 144, 226, 0.1);
+            border: 2px solid var(--neon-blue);
+            color: var(--text-glow);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-pills span:hover {
+            background: rgba(122, 197, 244, 0.2);
+            border-color: var(--accent-blue);
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(122, 197, 244, 0.5);
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+            justify-content: center;
+        }
+
+        .contact-btn {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 0.8rem;
+            background: var(--neon-blue);
+            color: var(--darker-navy);
+            padding: 1rem 1.5rem;
+            border: none;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(74, 144, 226, 0.5);
+            display: inline-block;
+            line-height: 1.5;
+        }
+
+        .contact-btn:hover {
+            background: var(--accent-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 25px rgba(122, 197, 244, 0.7);
+        }
+
+        .story-content p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            font-size: 1.2rem;
+            color: var(--text-glow);
+        }
+
+        .quote {
+            background: rgba(122, 197, 244, 0.1);
+            border-left: 4px solid var(--accent-blue);
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            font-style: italic;
+            color: var(--accent-blue);
+            border-radius: 5px;
+            font-size: 1.2rem;
+        }
+
+        .fun-fact {
+            background: linear-gradient(135deg, var(--neon-blue) 0%, var(--accent-blue) 100%);
+            color: var(--darker-navy);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-top: 2rem;
+            box-shadow: 0 0 20px var(--neon-blue);
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            .glitch {
+                font-size: 1.2rem;
+            }
+
+            .subtitle {
+                font-size: 1.5rem;
+            }
+
+            .tagline {
+                font-size: 1.2rem;
+            }
+
+            .content-header h2 {
+                font-size: 1.5rem;
+            }
+
+            .marquee span {
+                font-size: 0.8rem;
+            }
+
+            .back-button {
+                font-size: 0.7rem;
+                padding: 0.8rem 1.5rem;
+            }
+
+            .map-container {
+                padding: 1rem;
+            }
+
+            .instructions {
+                font-size: 1.3rem;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+
+    <div class="app">
+        <!-- Home View -->
+        <div id="home-view" class="home-container">
+            <header class="header">
+                <div class="marquee">
+                    <span>✨ Welcome to Roberto's California Adventure ✨ Click on a city to explore! ✨ Welcome to Roberto's California Adventure ✨</span>
+                </div>
+            </header>
+
+            <main class="main-content">
+                <div class="title-box">
+                    <h1 class="glitch">
+                        ROBERTO ECHEVERRIA SOSA
+                    </h1>
+                    <p class="subtitle">🌟 Full-Stack Developer 🌟</p>
+                    <p class="tagline">~ Journey Through California ~</p>
+                    <div class="home-cta">
+                        <button class="about-btn" onclick="showPage('about')">
+                            ✨ About Me ✨
+                        </button>
+                    </div>
+                </div>
+
+                <div class="map-container">
+                    <div class="map-wrapper">
+                        <img src="California_Map.png" alt="California Map" class="california-map-image">
+                        
+                        <div class="landmark-marker sf-marker" onclick="showPage('sf')">
+                            <span class="landmark-label">San Francisco</span>
+                        </div>
+
+                        <div class="landmark-marker la-marker" onclick="showPage('la')">
+                            <span class="landmark-label">Los Angeles</span>
+                        </div>
+
+                        <div class="landmark-marker sd-marker" onclick="showPage('sd')">
+                            <span class="landmark-label">San Diego</span>
+                        </div>
+                    </div>
+
+                    <div class="instructions">
+                        <span>👆 Click on the landmarks!</span>
+                    </div>
+                </div>
+            </main>
+
+            <footer class="footer">
+                <div class="visitor-counter">
+                    👁️ Visitors: ∞
+                </div>
+                <p>Made with 💖 in California | Est. 2024</p>
+                <div class="badges">
+                    <span class="badge badge-html">HTML/CSS/JS</span>
+                    <span class="badge badge-vibes">VIBES</span>
+                </div>
+            </footer>
+        </div>
+
+        <!-- About Page -->
+        <div id="about-page" class="detail-page">
+            <button class="back-button" onclick="showPage('home')">← BACK TO MAP</button>
+            
+            <div class="content-header">
+                <h2>✨ ABOUT ME ✨</h2>
+                <div class="underline"></div>
+            </div>
+
+            <div class="about-content">
+                <section class="section-box">
+                    <h3>Welcome to my corner of the internet!</h3>
+                    <p class="intro-text">
+                        Yo! I'm <strong>Roberto Echeverria Sosa</strong>, a Data Science major at UC San Diego 
+                        with a passion for Machine Learning. I grew up in South Central LA and I'm all about 
+                        using tech to create opportunities for communities like mine.
+                    </p>
+                    <p class="intro-text">
+                        This site showcases my journey through California - from South Central LA to the Bay Area and San Diego.
+                    </p>
+                </section>
+
+                <section class="section-box">
+                    <h3>🌟 Quick Facts About Me:</h3>
+                    <ul class="facts-list">
+                        <li>🏠 I'm from <strong>South Central LA</strong> - the streets that built me</li>
+                        <li>🎓 Currently studying at <strong>UCSD</strong> (Class of 2027, GPA: 3.94)</li>
+                        <li>💻 My main languages are <strong>Python</strong>, <strong>Java</strong>, and <strong>JavaScript</strong></li>
+                        <li>🤖 I love <strong>Machine Learning</strong> and building things that actually help people</li>
+                        <li>🌊 I code best with ocean sounds in the background (San Diego perks!)</li>
+                        <li>⚡ I'm on the <strong>DS3 Software Board</strong> at UCSD</li>
+                        <li>📊 I once presented data science findings to 200+ people</li>
+                        <li>🚗 I worked at <strong>Waymo</strong> on autonomous vehicle systems</li>
+                        <li>🏈 I built a Fantasy Football app with ML that predicts player performance</li>
+                        <li>💯 My motto: "From the streets to the code streets"</li>
+                    </ul>
+                </section>
+
+                <section class="section-box">
+                    <h3>🚀 Featured Projects:</h3>
+                    <div class="project-grid">
+                        <div class="project-box">
+                            <h3>🏈 Fantasy Football Draft App</h3>
+                            <p>ML-powered draft assistant with 16,000+ NFL data points. Built custom projection system using Gradient Boosting (MAE = 0.52).</p>
+                            <div class="tags">
+                                <span class="tag">Python</span>
+                                <span class="tag">ML</span>
+                                <span class="tag">APIs</span>
+                            </div>
+                        </div>
+
+                        <div class="project-box">
+                            <h3>📱 Food Vendor App</h3>
+                            <p>MIT App Inventor project connecting street vendors to clients. Made during my time at Hack the Hood.</p>
+                            <div class="tags">
+                                <span class="tag">App Development</span>
+                                <span class="tag">Social Impact</span>
+                            </div>
+                        </div>
+
+                        <div class="project-box">
+                            <h3>🚗 Waymo Navigation System</h3>
+                            <p>Designed ultrasonic navigation for low-visibility conditions & solar-powered thermal regulation system.</p>
+                            <div class="tags">
+                                <span class="tag">IoT</span>
+                                <span class="tag">Autonomous Vehicles</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section-box">
+                    <h3>🛠️ Tech Stack:</h3>
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h4>Languages</h4>
+                            <div class="skill-pills">
+                                <span>Python</span>
+                                <span>Java</span>
+                                <span>JavaScript</span>
+                                <span>R</span>
+                                <span>HTML/CSS</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h4>Frameworks & Tools</h4>
+                            <div class="skill-pills">
+                                <span>React</span>
+                                <span>Pandas</span>
+                                <span>NumPy</span>
+                                <span>Matplotlib</span>
+                                <span>Power BI</span>
+                                <span>Tableau</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h4>Other Skills</h4>
+                            <div class="skill-pills">
+                                <span>Machine Learning</span>
+                                <span>Data Visualization</span>
+                                <span>Agile</span>
+                                <span>Git</span>
+                                <span>Public Speaking</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section-box">
+                    <h3>📬 Let's Connect!</h3>
+                    <p class="intro-text">
+                        I'm always down to chat about tech, LA culture, data science, or just vibe. 
+                        Hit me up if you want to collaborate on something cool or just say what's up!
+                    </p>
+                    <div class="contact-buttons">
+                        <a href="mailto:recheverriasosa@ucsd.edu" class="contact-btn">
+                            📧 Email Me
+                        </a>
+                        <a href="https://linkedin.com/in/robertoecheverriasosa" target="_blank" class="contact-btn">
+                            💼 LinkedIn
+                        </a>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- San Francisco Page -->
+        <div id="sf-page" class="detail-page">
+            <button class="back-button" onclick="showPage('home')">← BACK TO MAP</button>
+            
+            <div class="content-header">
+                <h2>🌉 SAN FRANCISCO 🌉</h2>
+                <div class="underline"></div>
+            </div>
+
+            <div class="city-content">
+                <div class="section-box">
+                    <h3>🎯 Hack the Hood - Data Science Researcher</h3>
+                    <div class="project-card">
+                        <p class="description">Oakland, CA | June 2024 - August 2024</p>
+                        <ul class="highlights">
+                            <li>📊 Keynote Speaker presenting Mergers and Acquisitions Data Science project findings on 14,000 data points</li>
+                            <li>📈 Utilized data visualization techniques to communicate findings to a group of 200+ people effectively</li>
+                            <li>📱 Used MIT App Inventor to create a functioning food vendor app that connects street vendors to clients</li>
+                        </ul>
+                        <div class="tags">
+                            <span class="tag">Data Science</span>
+                            <span class="tag">Public Speaking</span>
+                            <span class="tag">App Development</span>
+                            <span class="tag">MIT App Inventor</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-box">
+                    <h3>👨‍💻 TechKnowHow - Coding Instructor</h3>
+                    <div class="project-card">
+                        <p class="description">Oakland, CA | May 2023 - August 2023</p>
+                        <ul class="highlights">
+                            <li>📚 Instructed 200+ students in tech-focused summer camps, fostering a passion for computer science</li>
+                            <li>🎓 Adapted curriculum in LEGO, Robotics, Scratch, and Java to diverse skill levels</li>
+                            <li>💡 Translated complex tech concepts into understandable terms, promoting creative problem-solving</li>
+                        </ul>
+                        <div class="tags">
+                            <span class="tag">Teaching</span>
+                            <span class="tag">Java</span>
+                            <span class="tag">Robotics</span>
+                            <span class="tag">Scratch</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Los Angeles Page -->
+        <div id="la-page" class="detail-page">
+            <button class="back-button" onclick="showPage('home')">← BACK TO MAP</button>
+            
+            <div class="content-header">
+                <h2>🌴 LOS ANGELES 🌴</h2>
+                <div class="underline"></div>
+            </div>
+
+            <div class="city-content">
+                <div class="section-box">
+                    <h3>🏠 Growing Up in South Central</h3>
+                    <div class="story-content">
+                        <p>
+                            Raised in South Central LA, I learned early on the power of resilience, 
+                            community, and dreaming big. The streets that shaped me taught me to see challenges 
+                            as opportunities and to never forget where I came from.
+                        </p>
+                        <p>
+                            South Central gave me my drive, my hustle, and my commitment to using technology 
+                            to create opportunities for communities like mine. Every line of code I write is 
+                            a tribute to the neighborhood that made me who I am.
+                        </p>
+                        <div class="quote">"Fun Fact: Attended Edison Middle School"</div>
+                    </div>
+                </div>
+
+                <div class="section-box">
+                    <h3>🚗 Waymo Career Institute - Software Engineer Intern</h3>
+                    <div class="project-card">
+                        <p class="description">Los Angeles, CA | August 2024 - December 2024</p>
+                        <ul class="highlights">
+                            <li>🌪️ Conceived and designed an ultrasonic navigation system enabling safe maneuvering through low-visibility sandstorms</li>
+                            <li>☀️ Created a solar-powered thermal regulation system to stabilize sensor performance under extreme temperatures</li>
+                            <li>💾 Created a virtual network of clients, servers, and a firewall security for 50 GB of cloud storage using VirtualBox</li>
+                            <li>🌐 Developed a helpdesk website using GoDaddy AI Website Builder to manage ticketed requests</li>
+                        </ul>
+                        <div class="tags">
+                            <span class="tag">Autonomous Vehicles</span>
+                            <span class="tag">VirtualBox</span>
+                            <span class="tag">Cloud Storage</span>
+                            <span class="tag">Web Development</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- San Diego Page -->
+        <div id="sd-page" class="detail-page">
+            <button class="back-button" onclick="showPage('home')">← BACK TO MAP</button>
+            
+            <div class="content-header">
+                <h2>🏖️ SAN DIEGO 🏖️</h2>
+                <div class="underline"></div>
+            </div>
+
+            <div class="city-content">
+                <div class="section-box">
+                    <h3>🎓 UC San Diego</h3>
+                    <div class="project-card">
+                        <p class="description">La Jolla, CA | Expected Graduation: June 2027 | GPA: 3.94</p>
+                        <ul class="highlights">
+                            <li>📖 Bachelor of Science in Data Science - Machine Learning Track</li>
+                            <li>💻 Relevant Coursework: Data Structures & Algorithms (Java), Applied Python, Foundations of Data Science</li>
+                            <li>🏆 Active in campus tech community and leadership roles</li>
+                        </ul>
+                        <div class="tags">
+                            <span class="tag">Data Science</span>
+                            <span class="tag">Machine Learning</span>
+                            <span class="tag">Java</span>
+                            <span class="tag">Python</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-box">
+                    <h3>💼 UCSD Data Science Student Society (DS3) - Software Developer</h3>
+                    <div class="project-card">
+                        <p class="description">La Jolla, CA | September 2025 - Present</p>
+                        <ul class="highlights">
+                            <li>💻 Utilized best coding practices to write clean code and create front-end user interfaces for the DS3 website</li>
+                            <li>🏃 Leveraged agile methodologies in weekly sprints to optimize production time</li>
+                            <li>🤝 Collaborate with team members to build the data science community at UCSD</li>
+                        </ul>
+                        <div class="tags">
+                            <span class="tag">Leadership</span>
+                            <span class="tag">Front-End</span>
+                            <span class="tag">Agile</span>
+                            <span class="tag">Web Development</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-box">
+                    <h3>🏈 Fantasy Football Draft App</h3>
+                    <div class="project-card">
+                        <p class="description">ML & Software Engineering Project | August 2025 - September 2025</p>
+                        <ul class="highlights">
+                            <li>📊 Processed 16,000+ rows of NFL data covering 3 seasons, 300+ players, and 16+ weekly performance features via automated NFL data API pipelines</li>
+                            <li>🤖 Developed a custom Fantasy Point Projection system using Gradient Boosting Regressor, achieving MAE = 0.52</li>
+                            <li>🎮 Built a full-stack draft interface with interactive player stats and highlight video playback for each drafted player</li>
+                        </ul>
+                        <div class="tags">
+                            <span class="tag">Machine Learning</span>
+                            <span class="tag">Full-Stack</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">APIs</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fun-fact">
+                    <p>🌊 Fun Fact: I code best with ocean sounds in the background!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showPage(page) {
+            // Hide home view
+            document.getElementById('home-view').style.display = 'none';
+            
+            // Hide all detail pages
+            const pages = document.querySelectorAll('.detail-page');
+            pages.forEach(p => p.classList.remove('active'));
+            
+            // Show selected page
+            if (page === 'home') {
+                document.getElementById('home-view').style.display = 'block';
+            } else {
+                const pageId = page + '-page';
+                const selectedPage = document.getElementById(pageId);
+                if (selectedPage) {
+                    selectedPage.classList.add('active');
+                }
+            }
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
