@@ -217,6 +217,8 @@
             display: block;
             border-radius: 15px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
         }
 
         .landmark-marker {
@@ -227,6 +229,7 @@
             flex-direction: column;
             align-items: center;
             gap: 0.5rem;
+            z-index: 10;
         }
 
         .landmark-marker:hover {
@@ -870,7 +873,7 @@
                         Hit me up if you want to collaborate on something cool or just say what's up!
                     </p>
                     <div class="contact-buttons">
-                        <a href="mailto:recheverriasosa@ucsd.edu" class="contact-btn">
+                        <a href="/cdn-cgi/l/email-protection#eb998e88838e9d8e9999828a9884988aab9e88988fc58e8f9e" class="contact-btn">
                             📧 Email Me
                         </a>
                         <a href="https://linkedin.com/in/robertoecheverriasosa" target="_blank" class="contact-btn">
@@ -1048,7 +1051,7 @@
         </div>
     </div>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         function showPage(page) {
             // Hide home view
             document.getElementById('home-view').style.display = 'none';
@@ -1064,13 +1067,4 @@
                 const pageId = page + '-page';
                 const selectedPage = document.getElementById(pageId);
                 if (selectedPage) {
-                    selectedPage.classList.add('active');
-                }
-            }
-            
-            // Scroll to top
-            window.scrollTo(0, 0);
-        }
-    </script>
-</body>
-</html>
+                    selectedPage.classList.add('acti
