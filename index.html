@@ -918,7 +918,7 @@
                         Hit me up if you want to collaborate on something cool or just say what's up!
                     </p>
                     <div class="contact-buttons">
-                        <a href="/cdn-cgi/l/email-protection#eb998e88838e9d8e9999828a9884988aab9e88988fc58e8f9e" class="contact-btn">
+                        <a href="mailto:recheverriasosa@ucsd.edu" class="contact-btn">
                             📧 Email Me
                         </a>
                         <a href="https://linkedin.com/in/robertoecheverriasosa" target="_blank" class="contact-btn">
@@ -1096,54 +1096,37 @@
         </div>
     </div>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     <script>
         function showPage(page) {
-            console.log('showPage called with:', page);
-            
-            // Hide home view
             const homeView = document.getElementById('home-view');
-            if (homeView) {
-                homeView.style.display = 'none';
-                console.log('Home view hidden');
-            }
-            
-            // Hide all detail pages
-            const pages = document.querySelectorAll('.detail-page');
-            pages.forEach(p => p.classList.remove('active'));
-            console.log('All detail pages cleared');
-            
-            // Show selected page
+            const aboutPage = document.getElementById('about-page');
+            const sfPage = document.getElementById('sf-page');
+            const laPage = document.getElementById('la-page');
+            const sdPage = document.getElementById('sd-page');
+
+            // Hide everything first
+            if (homeView) homeView.style.display = 'none';
+            if (aboutPage) aboutPage.classList.remove('active');
+            if (sfPage) sfPage.classList.remove('active');
+            if (laPage) laPage.classList.remove('active');
+            if (sdPage) sdPage.classList.remove('active');
+
+            // Show the selected page
             if (page === 'home') {
-                if (homeView) {
-                    homeView.style.display = 'block';
-                    console.log('Showing home view');
-                }
-            } else {
-                const pageId = page + '-page';
-                const selectedPage = document.getElementById(pageId);
-                console.log('Looking for page:', pageId, 'Found:', selectedPage);
-                if (selectedPage) {
-                    selectedPage.classList.add('active');
-                    console.log('Page activated:', pageId);
-                } else {
-                    console.error('Page not found:', pageId);
-                }
+                if (homeView) homeView.style.display = 'block';
+            } else if (page === 'about') {
+                if (aboutPage) aboutPage.classList.add('active');
+            } else if (page === 'sf') {
+                if (sfPage) sfPage.classList.add('active');
+            } else if (page === 'la') {
+                if (laPage) laPage.classList.add('active');
+            } else if (page === 'sd') {
+                if (sdPage) sdPage.classList.add('active');
             }
-            
+
             // Scroll to top
             window.scrollTo(0, 0);
         }
-
-        // Test on load
-        window.addEventListener('DOMContentLoaded', function() {
-            console.log('DOM loaded');
-            console.log('Home view exists:', !!document.getElementById('home-view'));
-            console.log('About page exists:', !!document.getElementById('about-page'));
-            console.log('SF page exists:', !!document.getElementById('sf-page'));
-            console.log('LA page exists:', !!document.getElementById('la-page'));
-            console.log('SD page exists:', !!document.getElementById('sd-page'));
-        });
     </script>
 </body>
-</html>
+</html
