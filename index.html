@@ -1099,27 +1099,51 @@
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     <script>
         function showPage(page) {
+            console.log('showPage called with:', page);
+            
             // Hide home view
-            document.getElementById('home-view').style.display = 'none';
+            const homeView = document.getElementById('home-view');
+            if (homeView) {
+                homeView.style.display = 'none';
+                console.log('Home view hidden');
+            }
             
             // Hide all detail pages
             const pages = document.querySelectorAll('.detail-page');
             pages.forEach(p => p.classList.remove('active'));
+            console.log('All detail pages cleared');
             
             // Show selected page
             if (page === 'home') {
-                document.getElementById('home-view').style.display = 'block';
+                if (homeView) {
+                    homeView.style.display = 'block';
+                    console.log('Showing home view');
+                }
             } else {
                 const pageId = page + '-page';
                 const selectedPage = document.getElementById(pageId);
+                console.log('Looking for page:', pageId, 'Found:', selectedPage);
                 if (selectedPage) {
                     selectedPage.classList.add('active');
+                    console.log('Page activated:', pageId);
+                } else {
+                    console.error('Page not found:', pageId);
                 }
             }
             
             // Scroll to top
             window.scrollTo(0, 0);
         }
+
+        // Test on load
+        window.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded');
+            console.log('Home view exists:', !!document.getElementById('home-view'));
+            console.log('About page exists:', !!document.getElementById('about-page'));
+            console.log('SF page exists:', !!document.getElementById('sf-page'));
+            console.log('LA page exists:', !!document.getElementById('la-page'));
+            console.log('SD page exists:', !!document.getElementById('sd-page'));
+        });
     </script>
 </body>
 </html>
