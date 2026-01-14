@@ -1097,6 +1097,7 @@
     </div>
 
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         function showPage(page) {
             // Hide home view
             document.getElementById('home-view').style.display = 'none';
@@ -1112,4 +1113,13 @@
                 const pageId = page + '-page';
                 const selectedPage = document.getElementById(pageId);
                 if (selectedPage) {
-                    selectedPage.classList.add('acti
+                    selectedPage.classList.add('active');
+                }
+            }
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
